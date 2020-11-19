@@ -1,0 +1,16 @@
+{
+  "name": "action-item-app-server",
+  "version": "1.0.0",
+  "description": "Node server for hosting the client: ActionItemApp",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "express": "^4.17.1"
+  }
+}

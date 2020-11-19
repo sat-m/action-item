@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// helper classes
+.clickable {
+  cursor: pointer;
+}
+.margin-left-5 {
+  margin-left: 5px;
+}
+
+// datepicker css hack to open the calendar at the bottom of the icon
+.hidden-input {
+  .mat-form-field-flex {
+    height: 10px;
+  }
+}

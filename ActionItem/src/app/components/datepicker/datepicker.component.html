@@ -1,0 +1,18 @@
+<div>
+  <div class="clickable flex">
+    <mat-icon (click)="picker.open()">date_range</mat-icon>
+    
+
+    <mat-form-field class="hidden-input">
+      <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate" (dateChange)="dateUpdated($event)">
+      <mat-datepicker #picker ></mat-datepicker>
+    </mat-form-field>
+
+    <div class="date-literal">
+      <span (click)="picker.open()">{{date| date: "MMMM d"}}</span>
+      <span class="superscript">
+        {{(date| date: "d") | dateSuffix}}
+      </span>
+    </div>
+  </div>
+</div>

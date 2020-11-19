@@ -1,0 +1,21 @@
+<div class="profile-flex clickable">
+  <div [matMenuTriggerFor]="userMenu" class="profile-picture" [style.backgroundColor]="user.favoriteColor">
+    <span>
+      {{username | initialsMaker}}
+    </span></div>
+  <div class="username"> {{username}}</div>
+</div>
+
+<mat-menu #userMenu="matMenu">
+  <button mat-menu-item *ngFor="let userOption of users" (click)="userUpdated(userOption)">
+    <div class="option-flex">
+      <div class="profile-picture" [style.backgroundColor]="userOption.favoriteColor">
+        <span>
+          {{(userOption.firstname + " " + userOption.lastname) |  initialsMaker}}
+        </span></div>
+      <div> {{userOption.firstname }} {{userOption.lastname }} </div>
+    </div>
+  </button>
+
+  <button mat-menu-item (click)="openNewUserDialog()">+ Add New</button>
+</mat-menu>

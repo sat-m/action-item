@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="action-items-flex">
+    <div *ngFor="let item of actionItems">
+      <action-item [actionItem]="item" (onUserSelect)="changeUser($event, item)" (onDeadlineSelect)="changeDeadline($event, item)" (onTaskManagerSelect)="changeTaskManager($event, item)"></action-item>
+    </div>
+  </div>
+</div>

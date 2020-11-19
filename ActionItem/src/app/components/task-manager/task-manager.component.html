@@ -1,0 +1,17 @@
+<div *ngIf="taskManager !== 'None'" [matMenuTriggerFor]="menu" class="clickable inline option-flex">
+  <mat-icon [svgIcon]="taskManager | lowercase"></mat-icon>
+  <span class="margin-left-5">
+    {{taskManager}}
+  </span>
+</div>
+
+<mat-icon [matMenuTriggerFor]="menu" *ngIf="taskManager === 'None'" class="clickable"
+  matTooltip="Select task management tool" matTooltipPosition="right">more_horiz</mat-icon>
+
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item class="option-flex" *ngFor="let item of taskManagers" (click)="updateTaskManager(item)">
+    <mat-icon [svgIcon]="item.iconKey" *ngIf="item.iconKey"></mat-icon>
+    <span>{{item.name}}</span>
+  </button>
+</mat-menu>

@@ -1,0 +1,21 @@
+.superscript {
+  font-size: 0.7rem;
+  vertical-align: super;
+}
+
+.hidden-input {
+  visibility: hidden;
+  width: 2px;
+  height: 10px;
+}
+
+
+.flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.date-literal {
+  font-weight: 500;
+  font-size: 0.85rem;
+}

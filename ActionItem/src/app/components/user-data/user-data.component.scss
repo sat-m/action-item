@@ -1,0 +1,30 @@
+.profile-flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile-picture {
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:white;
+  font-weight: bold;
+}
+
+
+.username {
+  font-size: 0.8rem;
+    color: grey;
+}
+
+.option-flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items:center;
+}

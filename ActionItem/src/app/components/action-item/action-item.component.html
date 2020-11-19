@@ -1,0 +1,31 @@
+<mat-card class="action-card">
+
+  <div class="header-flex">
+    <app-user-data [user]="actionItem.user" (onUserSelect)="updateUser($event)"></app-user-data>
+
+    <app-datepicker [date]="actionItem.deadline" (onSelectDate)="updateDeadline($event)"></app-datepicker>
+
+  </div>
+
+  <mat-card-content>
+    <p *ngIf="!textIsEditable" matTooltip="Double click the text to edit it" matTooltipPosition="above"
+      (dblclick)="toggleEditMode(true)">
+      {{actionItem.actionText}}
+    </p>
+    <mat-form-field appClickOutside (clickOutside)="toggleEditMode(false)" appearance="outline" class="textarea-wrapper"
+      *ngIf="textIsEditable">
+      <mat-label>Click outside to save the changes</mat-label>
+      <textarea #textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="7"
+        [(ngModel)]="actionItem.actionText"></textarea>
+    </mat-form-field>
+
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <app-task-manager [taskManager]="actionItem.taskManagement" (onSelectManager)="updateTaskManager($event)">
+    </app-task-manager>
+
+
+  </mat-card-actions>
+</mat-card>
