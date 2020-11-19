@@ -17,9 +17,7 @@ export class ActionItemComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.actionItem);
-  }
+  ngOnInit(): void {}
 
   updateUser(newUser): void {
     this.userSelect.emit(newUser);

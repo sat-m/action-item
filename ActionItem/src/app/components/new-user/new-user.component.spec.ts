@@ -49,4 +49,23 @@ describe('NewUserComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show disabled Add button when the user firstname is not set', () => {
+    const addButton = fixture.nativeElement.querySelector('.add-button');
+
+    component.userData = {
+      firstname: '',
+      lastname: 'Smith'
+    };
+    fixture.detectChanges();
+
+    expect(addButton.disabled).toBeTruthy();
+    component.userData = {
+      firstname: 'John',
+      lastname: 'Smith'
+    };
+    fixture.detectChanges();
+    expect(addButton.disabled).toBeFalsy();
+
+  });
 });

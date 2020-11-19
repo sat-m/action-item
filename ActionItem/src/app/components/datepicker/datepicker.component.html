@@ -9,7 +9,7 @@
     </mat-form-field>
 
     <div class="date-literal">
-      <span (click)="picker.open()">{{date| date: "MMMM d"}}</span>
+      <span class="date-text" (click)="picker.open()">{{date| date: "MMMM d"}}</span>
       <span class="superscript">
         {{(date| date: "d") | dateSuffix}}
       </span>

@@ -8,7 +8,7 @@
 </div>
 
 <mat-menu #userMenu="matMenu">
-  <button mat-menu-item *ngFor="let userOption of users" (click)="userUpdated(userOption)">
+  <button mat-menu-item *ngFor="let userOption of users; let i = index;" [class]="'button'+i" (click)="userUpdated(userOption)">
     <div class="option-flex">
       <div class="profile-picture" [style.backgroundColor]="userOption.favoriteColor">
         <span>

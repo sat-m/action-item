@@ -1,4 +1,4 @@
-<div *ngIf="taskManager !== 'None'" [matMenuTriggerFor]="menu" class="clickable inline option-flex">
+<div *ngIf="taskManager !== 'None'" [matMenuTriggerFor]="menu" class="clickable inline option-flex task-label">
   <mat-icon [svgIcon]="taskManager | lowercase"></mat-icon>
   <span class="margin-left-5">
     {{taskManager}}

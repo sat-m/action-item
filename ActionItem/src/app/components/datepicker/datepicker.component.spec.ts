@@ -41,4 +41,14 @@ describe('DatepickerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show the date in MMMM dd format', () => {
+    const dateTextNode = fixture.nativeElement.querySelector('.date-text');
+    const date = new Date();
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    const expectedOutput = monthNames[date.getMonth()] + ' ' + date.getDate();
+    expect(dateTextNode.textContent).toContain(expectedOutput);
+  });
 });

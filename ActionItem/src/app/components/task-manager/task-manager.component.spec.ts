@@ -40,4 +40,20 @@ describe('TaskManagerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+  it('should hide task manager label when task manager is None', () => {
+    component.taskManager = 'None';
+    fixture.detectChanges();
+    let label = fixture.nativeElement.querySelector('.task-label');
+
+    expect(label).toBeNull();
+
+    component.taskManager = 'Jira';
+
+    fixture.detectChanges();
+    label = fixture.nativeElement.querySelector('.task-label');
+
+    expect(label).toBeDefined();
+  });
 });
