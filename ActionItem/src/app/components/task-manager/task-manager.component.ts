@@ -9,16 +9,19 @@ import { TaskManager } from 'src/app/interfaces/task-manager.interface';
 })
 export class TaskManagerComponent implements OnInit {
   @Input() taskManager;
-  @Output() onSelectManager = new EventEmitter();
+  @Output() selectManager = new EventEmitter();
   taskManagers: TaskManager[];
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.taskManagers = this.dataService.getTaskManagers();
+    this.dataService.getTaskManagers()
+      .subscribe((taskManagerData) => {
+        this.taskManagers = taskManagerData;
+      });
   }
 
-  updateTaskManager(tmItem){
-    this.onSelectManager.emit(tmItem);
+  updateTaskManager(tmItem): void {
+    this.selectManager.emit(tmItem);
   }
 
 }

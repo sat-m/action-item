@@ -20,37 +20,45 @@ export class AppComponent implements OnInit {
     iconRegistry.addSvgIcon('trello', sanitizer.bypassSecurityTrustResourceUrl('assets/img/trello.svg'));
   }
 
-  ngOnInit() {
-    this.users = this.dataService.getUsers();
-    this.actionItems = this.dataService.getActionItems();
+  ngOnInit(): void {
+    this.dataService.getUsers()
+      .subscribe((userData) => {
+        this.users = userData;
+      });
+
+    this.dataService.getActionItems()
+      .subscribe((actionData) => {
+        this.actionItems = actionData;
+      });
   }
 
-  changeUser(newUser, actionItem: ActionItem) {
+  changeUser(newUser, actionItem: ActionItem): void {
     if (!newUser) {
       return;
     }
     if (newUser.isNewUser) {
-      let addedUser = this.dataService.addNewUser(newUser);
+      const addedUser = this.dataService.addNewUser(newUser);
       actionItem.user = addedUser;
-      this.users = this.dataService.getUsers();
-      //add a new user, get all the users, update the actionItem user
+      this.dataService.getUsers()
+        .subscribe((userData) => {
+          this.users = userData;
+        });
     } else {
-      actionItem.user = newUser
-
+      actionItem.user = newUser;
     }
 
   }
 
-  changeDeadline(newDate: Date, actionItem: ActionItem) {
+  changeDeadline(newDate: Date, actionItem: ActionItem): void {
     if (newDate) {
-      actionItem.deadline = newDate
+      actionItem.deadline = newDate;
     }
   }
 
-  changeTaskManager(selectedTaskManager: TaskManager, actionItem: ActionItem) {
+  changeTaskManager(selectedTaskManager: TaskManager, actionItem: ActionItem): void {
 
     if (selectedTaskManager) {
-      actionItem.taskManagement = selectedTaskManager.name
+      actionItem.taskManagement = selectedTaskManager.name;
     }
   }
 }

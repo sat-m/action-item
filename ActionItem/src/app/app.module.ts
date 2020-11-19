@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from "@angular/forms"
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ActionItemComponent } from './components/action-item/action-item.component';
@@ -21,8 +21,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 
 import { HttpClientModule } from '@angular/common/http';
@@ -58,7 +59,8 @@ import { NewUserComponent } from './components/new-user/new-user.component';
     MatNativeDateModule,
     MatTooltipModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule
 
   ],
   providers: [DataService],

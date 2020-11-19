@@ -1,4 +1,4 @@
 export interface TaskManager {
-  iconKey: string,
-  name: string
+  iconKey: string;
+  name: string;
 }

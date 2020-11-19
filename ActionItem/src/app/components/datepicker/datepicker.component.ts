@@ -7,23 +7,24 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class DatepickerComponent implements OnInit {
   @Input() date;
-  @Output() onSelectDate = new EventEmitter();
+  @Output() selectDate = new EventEmitter();
   minDate: Date;
   maxDate: Date;
-  constructor() { 
+  constructor() {
     this.minDate = new Date();
-    // maximum allowed date to be the end of this year, since we do not show the year part in actionItem deadline, this will help avoid misunderstandings 
+
+    // maximum allowed date to be the end of this year
     this.maxDate = new Date(this.minDate.getFullYear(), 11, 31);
   }
 
   ngOnInit(): void {
   }
 
-  dateUpdated(event){
+  dateUpdated(event): void {
     console.log(event.value);
-    
-    this.onSelectDate.emit(event.value);
-    
+
+    this.selectDate.emit(event.value);
+
   }
 
 }

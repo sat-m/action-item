@@ -1,9 +1,9 @@
 <mat-card class="action-card">
 
   <div class="header-flex">
-    <app-user-data [user]="actionItem.user" (onUserSelect)="updateUser($event)"></app-user-data>
+    <app-user-data [user]="actionItem.user" (userSelect)="updateUser($event)"></app-user-data>
 
-    <app-datepicker [date]="actionItem.deadline" (onSelectDate)="updateDeadline($event)"></app-datepicker>
+    <app-datepicker [date]="actionItem.deadline" (selectDate)="updateDeadline($event)"></app-datepicker>
 
   </div>
 
@@ -23,7 +23,7 @@
   </mat-card-content>
 
   <mat-card-actions>
-    <app-task-manager [taskManager]="actionItem.taskManagement" (onSelectManager)="updateTaskManager($event)">
+    <app-task-manager [taskManager]="actionItem.taskManagement" (selectManager)="updateTaskManager($event)">
     </app-task-manager>
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -6,25 +6,28 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './new-user.component.html',
   styleUrls: ['./new-user.component.scss']
 })
-export class NewUserComponent implements OnInit {
-  userData =  {
-    firstname: "",
-    lastname: ""
+export class NewUserComponent {
+  userData = {
+    firstname: '',
+    lastname: ''
+  };
+  public get formIsValid(): boolean {
+    return !!this.userData.firstname.trim() && !!this.userData.lastname.trim();
   }
   constructor(public dialogRef: MatDialogRef<NewUserComponent>) { }
 
-  ngOnInit(): void {
-  }
-
-  cancel() {
+  cancel(): void {
     this.dialogRef.close();
-
   }
 
-  saveUser() {
-    console.log(this.userData);
-    this.dialogRef.close(this.userData);
-
+  saveUser(): void {
+    this.userData = {
+      firstname: this.userData.firstname.trim(),
+      lastname: this.userData.lastname.trim()
+    };
+    if (this.userData.firstname && this.userData.lastname) {
+      this.dialogRef.close(this.userData);
+    }
   }
 
 }

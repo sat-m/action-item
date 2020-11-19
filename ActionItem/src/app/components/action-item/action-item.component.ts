@@ -2,36 +2,36 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild }
 import { ActionItem } from 'src/app/interfaces/action-item-interface';
 
 @Component({
-  selector: 'action-item',
+  selector: 'app-action-item',
   templateUrl: './action-item.component.html',
   styleUrls: ['./action-item.component.scss']
 })
 export class ActionItemComponent implements OnInit {
   @Input() actionItem: ActionItem;
-  @Output() onUserSelect = new EventEmitter();
-  @Output() onDeadlineSelect = new EventEmitter();
-  @Output() onTaskManagerSelect = new EventEmitter();
+  @Output() userSelect = new EventEmitter();
+  @Output() deadlineSelect = new EventEmitter();
+  @Output() taskManagerSelect = new EventEmitter();
 
   textIsEditable: boolean;
-  @ViewChild("textarea") textarea: ElementRef;
-
+  @ViewChild('textarea') textarea: ElementRef;
 
   constructor() { }
+
   ngOnInit(): void {
     console.log(this.actionItem);
   }
 
-  updateUser(newUser) {
-    this.onUserSelect.emit(newUser);
+  updateUser(newUser): void {
+    this.userSelect.emit(newUser);
   }
 
-  updateDeadline(newDeadline){
-    
-    this.onDeadlineSelect.emit(newDeadline);
+  updateDeadline(newDeadline): void {
+
+    this.deadlineSelect.emit(newDeadline);
   }
 
-  updateTaskManager(newTaskManager){
-    this.onTaskManagerSelect.emit(newTaskManager);
+  updateTaskManager(newTaskManager): void {
+    this.taskManagerSelect.emit(newTaskManager);
   }
 
   toggleEditMode(isEditable: boolean): void {
@@ -39,7 +39,7 @@ export class ActionItemComponent implements OnInit {
     if (isEditable) {
       setTimeout(() => {
         this.textarea.nativeElement.focus();
-      }, 10)
+      }, 10);
     }
   }
 
