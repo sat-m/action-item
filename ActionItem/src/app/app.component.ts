@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
 import { ActionItem } from './interfaces/action-item-interface';
 import { User } from './interfaces/user.interface';
-import { DomSanitizer } from '@angular/platform-browser';
-import { MatIconRegistry } from '@angular/material/icon';
 import { TaskManager } from './interfaces/task-manager.interface';
 @Component({
   selector: 'app-root',
@@ -14,10 +12,8 @@ export class AppComponent implements OnInit {
   title = 'ActionItem';
   users: User[];
   actionItems: ActionItem[];
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private dataService: DataService) {
-    iconRegistry.addSvgIcon('jira', sanitizer.bypassSecurityTrustResourceUrl('assets/img/jira.svg'));
-    iconRegistry.addSvgIcon('slack', sanitizer.bypassSecurityTrustResourceUrl('assets/img/slack.svg'));
-    iconRegistry.addSvgIcon('trello', sanitizer.bypassSecurityTrustResourceUrl('assets/img/trello.svg'));
+  constructor( private dataService: DataService) {
+   this.dataService.registerIcons();
   }
 
   ngOnInit(): void {

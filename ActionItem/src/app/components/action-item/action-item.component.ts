@@ -26,7 +26,6 @@ export class ActionItemComponent implements OnInit {
   }
 
   updateDeadline(newDeadline): void {
-
     this.deadlineSelect.emit(newDeadline);
   }
 
