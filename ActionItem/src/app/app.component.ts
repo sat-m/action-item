@@ -52,7 +52,6 @@ export class AppComponent implements OnInit {
   }
 
   changeTaskManager(selectedTaskManager: TaskManager, actionItem: ActionItem): void {
-
     if (selectedTaskManager) {
       actionItem.taskManagement = selectedTaskManager.name;
     }

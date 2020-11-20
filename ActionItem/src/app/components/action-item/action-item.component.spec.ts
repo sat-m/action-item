@@ -20,6 +20,7 @@ import { ActionItemComponent } from './action-item.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
+import { TaskManager } from 'src/app/interfaces/task-manager.interface';
 
 describe('ActionItemComponent', () => {
   let component: ActionItemComponent;
@@ -79,17 +80,13 @@ describe('ActionItemComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
+  // Test @Input
   it('should show the actionItem username', () => {
     const username = fixture.nativeElement.querySelector('.username');
     expect(username.textContent).toContain('John Smith');
   });
 
-  it('should show the actionItem username', () => {
-    const username = fixture.nativeElement.querySelector('.username');
-    expect(username.textContent).toContain('John Smith');
-  });
-
+  // Test @Outputs
 
   it('should correctly @Output value  emitted by nested UserData component (double output)', fakeAsync(() => {
     spyOn(component.userSelect, 'emit');
@@ -101,5 +98,36 @@ describe('ActionItemComponent', () => {
     fixture.detectChanges();
 
     expect(component.userSelect.emit).toHaveBeenCalledWith({ firstname: 'John', lastname: 'Dough' });
+  }));
+
+
+  it('should correctly @Output value  emitted by nested Datepicker component (double output)', fakeAsync(() => {
+    spyOn(component.deadlineSelect, 'emit');
+    const someDate = new Date();
+
+    const datepickerComponent = getDebugNode(fixture.nativeElement.querySelector('app-datepicker'));
+    datepickerComponent.componentInstance.selectDate.emit(someDate);
+    tick();
+
+    fixture.detectChanges();
+
+    expect(component.deadlineSelect.emit).toHaveBeenCalledWith(someDate);
+  }));
+
+  it('should correctly @Output value  emitted by nested TaskManager component (double output)', fakeAsync(() => {
+    spyOn(component.taskManagerSelect, 'emit');
+
+    const taskManagerItem: TaskManager = {
+      name: 'Slack',
+      iconKey: 'slack'
+    };
+
+    const taskManagerComponent = getDebugNode(fixture.nativeElement.querySelector('app-task-manager'));
+    taskManagerComponent.componentInstance.selectManager.emit(taskManagerItem);
+    tick();
+
+    fixture.detectChanges();
+
+    expect(component.taskManagerSelect.emit).toHaveBeenCalledWith(taskManagerItem);
   }));
 });
